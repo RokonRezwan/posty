@@ -39,7 +39,7 @@
                         <button type="submit" class="text-blue-500">Unlike</button>
                       </form>
 
-                      <!--                      <span>{{ $post->likes->count() }} {{ Str::plural('like', $post->likes->count()) }}</span> -->
+                      <span>{{ $post->likes->count() }} {{ Str::plural('like', $post->likes->count()) }}</span>
                     </div>
                   </div>                 
                @endforeach
