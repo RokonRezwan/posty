@@ -8,9 +8,14 @@ use App\Models\Like;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth'])->only(['store', 'destroy']);
+    }
+
      public function index()
      {
-         $posts = Post::latest()->with(['user'])->paginate(20);
+         $posts = Post::latest()->with(['user', 'likes'])->paginate(20);
 
          return view('posts.index',[
              'posts' => $posts

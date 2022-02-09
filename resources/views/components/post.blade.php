@@ -15,21 +15,22 @@
    
     <div class="flex items-center">
       @auth
-      
-      <form action="{{ route('posts.likes', $post->id) }}" method="post" class="mr-1">
-        @csrf
-        <button type="submit" class="text-blue-500">Like</button>
+      @if (!$post->likedBy(auth()->user()))
+      <form action="{{ route('posts.likes', $post) }}" method="post" class="mr-1">
+          @csrf
+          <button type="submit" class="text-blue-500">Like</button>
       </form>
-      
-      <form action="" method="post" class="mr-1">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="text-blue-500">Unlike</button>
+  @else
+      <form action="{{ route('posts.likes', $post) }}" method="post" class="mr-1">
+          @csrf
+          @method('DELETE')
+          <button type="submit" class="text-blue-500">Unlike</button>
       </form>
+  @endif
+        
+      @endauth
 
-                              
-      @endauth 
-
+      <span>{{ $post->likes->count() }} {{ Str::plural('like', $post->likes->count()) }}</span>
       
     </div>
   </div>
