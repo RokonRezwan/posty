@@ -10,16 +10,14 @@
             </div>
             <div class="bg-white p-6 rounded-lg">
               @if ($posts->count())
-               @foreach ( $posts as $post )
-                 <x-post :post="$post"/>                 
-               @endforeach
+                @foreach ( $posts as $post )
+                  <x-post :post="$post"/>                 
+                @endforeach
                 {{ $posts->links() }}
               @else
                 <p>{{ $user->name }} dose not have any posts</p>          
               @endif
-         
-            </div>
-            
+              </div> 
           </div>
     </div>
 
